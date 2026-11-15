@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflected XSS - Vulnerable</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">Web Security Lab</div>
+        <span class="danger">VULNERABLE VERSION</span>
+    </nav>
+
+    <main class="container">
+
+        <section class="intro">
+            <p class="tag">CYBER SECURITY DEMONSTRATION</p>
+            <h1>Reflected XSS Testing</h1>
+            <p class="description">
+                Explore how a web application handles user input
+                and how improper output handling can lead to
+                reflected cross-site scripting attacks.
+            </p>
+        </section>
+
+        <section class="search-section">
+            <h2>Search Portal</h2>
+            <p>Enter a query below to test the application.</p>
+
+            <form action="/search" method="GET">
+                <label for="search">Search query</label>
+
+                <input
+                    type="text"
+                    name="search"
+                    id="search"
+                    placeholder="Type your search query here..."
+                    maxlength="500"
+                    required
+                >
+
+                <button type="submit">Submit Search</button>
+            </form>
+
+            <button type="button" class="sample-btn" id="sample">
+                Fill Harmless XSS Test Payload
+            </button>
+        </section>
+
+        <section class="warning-section">
+            <div class="section-heading">
+                <span class="status-dot"></span>
+                <h2>Security Warning</h2>
+            </div>
+
+            <p>
+                <strong>Protection applied:</strong> None
+            </p>
+
+            <p>
+                User input is directly reflected into the server's
+                HTML response without output encoding. As a result,
+                injected HTML or JavaScript may be interpreted
+                and executed by the browser.
+            </p>
+        </section>
+
+        <footer>
+            Cyber Security Assignment | Reflected XSS
+        </footer>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

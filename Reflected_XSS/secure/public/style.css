@@ -1,0 +1,219 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+/* Navigation */
+
+.navbar {
+    background: #ffffff;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.brand {
+    font-size: 19px;
+    font-weight: bold;
+    color: #1e3a5f;
+}
+
+.safe {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 7px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Main content */
+
+.container {
+    max-width: 780px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tag {
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 12px 0;
+    color: #1e3a5f;
+}
+
+.description {
+    color: #64748b;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Search section */
+
+.search-section {
+    background: #ffffff;
+    padding: 28px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+h2 {
+    font-size: 19px;
+    margin-top: 0;
+}
+
+.search-section p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+label {
+    display: block;
+    margin-top: 22px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    margin-top: 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+button {
+    padding: 12px 20px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.sample-btn {
+    background: #64748b;
+    margin-left: 8px;
+}
+
+.sample-btn:hover {
+    background: #475569;
+}
+
+/* Security information */
+
+.protection-section {
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 22px;
+    margin-top: 22px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-heading h2 {
+    margin: 0;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #16a34a;
+}
+
+.protection-section p {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Search result page */
+
+.result {
+    padding: 20px;
+    margin: 20px 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+}
+
+.search-output {
+    overflow-wrap: anywhere;
+    margin-top: 10px;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 15px;
+    color: #2563eb;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    margin: 30px 0;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 16px 5%;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .search-section {
+        padding: 20px;
+    }
+
+    .sample-btn {
+        margin-left: 0;
+    }
+}

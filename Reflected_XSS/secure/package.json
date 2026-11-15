@@ -1,0 +1,13 @@
+
+{
+  "name": "reflected-xss-protected",
+  "version": "1.0.0",
+  "description": "Protected Reflected XSS demonstration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
