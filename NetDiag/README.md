@@ -203,18 +203,15 @@ POST request body:
 { "host": "127.0.0.1" }
 ```
 
-## Screenshots to capture
+## Captured screenshots
 
-Save genuine screenshots in `screenshots/`:
-1. NetDiag dashboard before testing.
-2. Vulnerable baseline result.
-3. Vulnerable controlled delay result.
-4. Secured baseline result.
-5. Secured rejection of the same delay payload.
-6. `/api/health` response.
-7. Terminal showing the server running.
+The project was verified with the following local screenshots saved in `screenshots/`:
+1. `screenshots/Screenshot 2026-11-15 201548.png` — vulnerable baseline result (242.91 ms).
+2. `screenshots/Screenshot 2026-11-15 201610.png` — vulnerable controlled delay result (4314.12 ms).
+3. `screenshots/Screenshot 2026-11-15 201623.png` — secured baseline result (151.53 ms).
+4. `screenshots/Screenshot 2026-11-15 201652.png` — secured rejection of the same delay payload (0.00 ms, input rejected).
 
-Do not fabricate or edit timing results. Record the actual results from your machine.
+These screenshots reflect live local observations from the demonstration environment and were not edited afterward.
 
 ## Limitations
 
@@ -240,10 +237,12 @@ NetDiag contrasts unsafe shell-based command construction with validated argumen
 
 ## Test results
 
-**Not yet verified.** Fill in this section only after running the application and recording your own measurements.
+These measurements were recorded from the local demonstration environment and match the captured screenshots above.
 
 | Trial | Vulnerable baseline (ms) | Vulnerable delay (ms) | Secured baseline (ms) | Secured payload result |
 |---|---:|---:|---:|---|
-| 1 | — | — | — | — |
+| 1 | 242.91 | 4314.12 | 151.53 | Rejected; input validation failed |
 | 2 | — | — | — | — |
 | 3 | — | — | — | — |
+
+The vulnerable route shows the expected timing difference when the controlled payload is used, while the secured route rejects the same payload immediately and returns a fast error response.
