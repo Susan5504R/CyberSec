@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="card">
+  <p>Logged in as <b>{{ user }}</b> · <a href="/logout">logout</a></p>
+  <h2>Balance: Rs {{ balance }}</h2>
+</div>
+
+<div class="card">
+  <h3>Transfer money</h3>
+  <form method="post" action="/transfer">
+    {% if secure %}
+    <!-- Mitigation: hidden synchronizer token, unknown to other sites -->
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    {% endif %}
+    <input name="to" placeholder="recipient (e.g. attacker)"><br>
+    <input name="amount" type="number" placeholder="amount"><br>
+    <button>Send</button>
+  </form>
+</div>
+
+<div class="card">
+  <h3>Transaction log</h3>
+  {% if log %}<ul>{% for l in log %}<li>{{ l }}</li>{% endfor %}</ul>
+  {% else %}<p>No transactions yet.</p>{% endif %}
+</div>
+{% endblock %}

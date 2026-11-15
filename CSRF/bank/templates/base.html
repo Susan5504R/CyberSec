@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MiniBank</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; max-width: 560px; margin: 40px auto; padding: 0 16px; }
+    .mode { padding: 6px 10px; border-radius: 6px; font-weight: 600; display: inline-block; }
+    .vuln { background: #fde2e2; color: #a40000; }
+    .safe { background: #ddf4e4; color: #0a6b2e; }
+    input { padding: 6px; margin: 4px 0; }
+    button { padding: 6px 14px; }
+    .card { border: 1px solid #ccc; border-radius: 8px; padding: 16px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>🏦 MiniBank</h1>
+  <span class="mode {{ 'safe' if secure else 'vuln' }}">
+    Mode: {{ 'SECURE (anti-CSRF token)' if secure else 'VULNERABLE' }}
+  </span>
+  {% block body %}{% endblock %}
+</body>
+</html>
