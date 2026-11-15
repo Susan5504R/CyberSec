@@ -1,0 +1,13 @@
+{
+  "name": "netdiag",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local network diagnostic and controlled OS command injection teaching demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

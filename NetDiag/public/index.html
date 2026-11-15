@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#171326">
+    <meta name="description" content="NetDiag local network diagnostics and command injection security demonstration.">
+    <title>NETDIAG // Network Diagnostic Terminal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="page-shell">
+        <header class="topbar">
+            <a class="brand-mark" href="#home" aria-label="NetDiag home">
+                <span class="brand-symbol">N</span>
+                <span>NETDIAG<span class="brand-slash">//</span></span>
+            </a>
+            <nav class="top-nav" aria-label="Main navigation">
+                <a href="#console">CONSOLE</a>
+                <a href="#comparison">COMPARISON</a>
+                <a href="#about">ABOUT</a>
+            </nav>
+            <div class="top-status"><span class="live-dot"></span> LOCAL SESSION</div>
+        </header>
+
+        <main id="home">
+            <section class="hero">
+                <div class="eyebrow"><span class="eyebrow-line"></span> CYBER SECURITY LAB / IT-30001</div>
+                <div class="hero-title-wrap">
+                    <h1>NET<span>DIAG</span></h1>
+                    <div class="hero-index">ND—001<br>BUILD 2026</div>
+                </div>
+                <div class="hero-bottom">
+                    <p class="hero-subtitle">NETWORK DIAGNOSTIC TERMINAL</p>
+                    <p class="hero-copy">Probe a host. Measure the response. Understand the risk.<br>
+                    A controlled demonstration of blind OS command injection.</p>
+                </div>
+                <div class="hero-rule"><span></span></div>
+            </section>
+
+            <section class="console-section" id="console">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">01 / TRANSMISSION CONSOLE</p>
+                        <h2>Run diagnostics<span class="orange">.</span></h2>
+                    </div>
+                    <div class="section-meta">MODE: LOCAL LAB<br>OS: WINDOWS</div>
+                </div>
+
+                <div class="console-frame">
+                    <div class="console-topline">
+                        <div class="window-dots"><i></i><i></i><i></i></div>
+                        <span>NETDIAG_TERMINAL.EXE</span>
+                        <span class="console-clock">SESSION ACTIVE</span>
+                    </div>
+
+                    <div class="console-content">
+                        <label for="hostInput" class="input-label">TARGET HOST / IPv4</label>
+                        <div class="input-row">
+                            <span class="input-prefix">&gt;_</span>
+                            <input id="hostInput" type="text" value="127.0.0.1"
+                                autocomplete="off" spellcheck="false"
+                                placeholder="127.0.0.1" maxlength="253">
+                            <button id="resetButton" class="reset-button" type="button">RESET</button>
+                        </div>
+                        <p class="input-hint">Enter 127.0.0.1 for the baseline test. The secured route accepts valid hostnames and IPv4 addresses.</p>
+
+                        <div class="action-grid">
+                            <button id="vulnerableButton" class="action-button vulnerable-button" type="button">
+                                <span class="button-number">01</span>
+                                <span><strong>RUN VULNERABLE</strong><small>exec() / shell interpretation</small></span>
+                                <span class="button-arrow">↗</span>
+                            </button>
+                            <button id="securedButton" class="action-button secured-button" type="button">
+                                <span class="button-number">02</span>
+                                <span><strong>RUN SECURED</strong><small>execFile() / no shell</small></span>
+                                <span class="button-arrow">↗</span>
+                            </button>
+                        </div>
+
+                        <div class="demo-payload">
+                            <div>
+                                <span class="payload-label">CONTROLLED TIME-DELAY TEST</span>
+                                <code id="payloadText">127.0.0.1 &amp; ping -n 5 127.0.0.1 &gt; nul</code>
+                            </div>
+                            <button id="usePayloadButton" type="button">LOAD TEST INPUT ↗</button>
+                        </div>
+                        <p class="safety-note"><span>!</span> Local classroom demonstration only. The vulnerable endpoint is deliberately constrained to this one harmless test payload and is bound to 127.0.0.1.</p>
+                    </div>
+                </div>
+
+                <div class="results-heading">
+                    <span class="section-kicker">LIVE OUTPUT / RESPONSE TELEMETRY</span>
+                    <span id="activityLabel" class="activity-label"><i></i> IDLE</span>
+                </div>
+                <div class="result-panel" aria-live="polite">
+                    <div class="result-icon" id="resultIcon">⌁</div>
+                    <div class="result-main">
+                        <p class="result-overline" id="resultOverline">AWAITING INPUT</p>
+                        <h3 id="resultTitle">No diagnostic run yet.</h3>
+                        <p id="resultMessage">Choose a test above to send a request to the local NetDiag server.</p>
+                    </div>
+                    <div class="result-time">
+                        <span>RESPONSE TIME</span>
+                        <strong id="resultTime">—<small> ms</small></strong>
+                    </div>
+                </div>
+                <div class="history-strip">
+                    <span>LAST REQUEST</span>
+                    <span id="lastRequest">NONE</span>
+                    <span id="acceptanceState">INPUT: —</span>
+                </div>
+            </section>
+
+            <section class="comparison-section" id="comparison">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">02 / SECURITY ANALYSIS</p>
+                        <h2>Same task. Different trust model<span class="orange">.</span></h2>
+                    </div>
+                    <div class="section-meta">COMPARE<br>THE IMPLEMENTATIONS</div>
+                </div>
+                <div class="comparison-grid">
+                    <article class="compare-card vulnerable-card">
+                        <div class="card-top"><span>IMPLEMENTATION 01</span><span class="tag tag-risk">VULNERABLE</span></div>
+                        <h3>Shell command</h3>
+                        <p>User input is concatenated into a command string. The shell interprets metacharacters such as <code>&amp;</code>.</p>
+                        <div class="code-line">exec(commandString)</div>
+                        <ul><li>Shell interprets the string</li><li>Command chaining can occur</li><li>Timing can reveal hidden execution</li></ul>
+                    </article>
+                    <article class="compare-card secured-card">
+                        <div class="card-top"><span>IMPLEMENTATION 02</span><span class="tag tag-safe">SECURED</span></div>
+                        <h3>Argument execution</h3>
+                        <p>Input is validated and supplied as one argument. No shell is used to parse user-controlled text.</p>
+                        <div class="code-line">execFile("ping", args)</div>
+                        <ul><li>Strict hostname/IP validation</li><li>Separate argument vector</li><li>shell: false</li></ul>
+                    </article>
+                </div>
+                <p class="comparison-footnote">The vulnerable endpoint is intentionally restricted to a fixed harmless demonstration payload. It is not a production design.</p>
+            </section>
+
+            <section class="about-section" id="about">
+                <div class="about-number">03</div>
+                <div class="about-copy">
+                    <p class="section-kicker">THE CONCEPT / CWE-78</p>
+                    <h2>Blind does not mean invisible<span class="orange">.</span></h2>
+                    <p>In blind OS command injection, command output is not returned to the user. A time-based test can still reveal execution: if a harmless injected command adds a predictable delay, the HTTP response takes longer even though the command output remains hidden.</p>
+                    <p>The mitigation demonstrated here is to avoid shell interpretation, validate input on the server, and execute the ping program with a separate argument array.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <span>NETDIAG © 2026</span>
+            <span>CYBER SECURITY / WEB SERVER SECURITY</span>
+            <span>LOCALHOST ONLY <b>●</b></span>
+        </footer>
+    </div>
+</body>
+</html>
